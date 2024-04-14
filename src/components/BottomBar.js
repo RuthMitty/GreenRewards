@@ -1,12 +1,18 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 
 export default function BottomBar(){
     return(
         <>
             <View style={styles.fill}>
                 <TouchableOpacity style={styles.boton}>
-
+                    <Text>lala</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.boton}>
+                    <Text>lala</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.boton}>
+                    <Text>lala</Text>
                 </TouchableOpacity>
             </View>
         </>
@@ -16,22 +22,20 @@ export default function BottomBar(){
 const styles = StyleSheet.create({
     fill: {
         flex: 1,
+        flexDirection: 'row',
         width: '100%',
         paddingVertical: 19,
-        paddingHorizontal: 23,
+        paddingHorizontal: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        gap: '57px',
+        gap: 10,
         background: 'white',
-        shadowOffset: {
-            width: 0,
-            height: -14
-        },
-        shadowColor: 'rgba(55, 140, 85, 0.07)',
-        shadowRadius: 18,
+        position: 'absolute',
+        left: 0,
+        bottom: 0
     },
     boton: {
-        
+
     }
 
 })
