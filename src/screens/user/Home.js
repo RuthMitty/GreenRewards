@@ -1,13 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Acciones from './Acciones';
+import BottomBar from '../../components/BottomBar';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Acciones /> */}
       <Text>Hola estás en el inicio</Text>
-      
+      <BottomBar />
     </View>
   );
 }
@@ -18,5 +17,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    height: '100%',
+    width: '100%'
   },
 });
