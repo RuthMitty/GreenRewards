@@ -1,24 +1,26 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, Image} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import actions from '../../assets/images/actions.png';
 import admin from '../../assets/images/admin.png';
 import rewards from '../../assets/images/rewards.png';
 import user from '../../assets/images/user.png';
 
 
-export default function BottomBar(){
+export default function BottomBar({navigation}){
     return(
         <View style={styles.fill}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Image style={styles.boton} source={actions}/>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Rewards')}>
                 <Image style={styles.boton} source={rewards}/>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                 <Image style={styles.boton} source={user}/>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('LoginAdmin')}>
                 <Image style={styles.boton} source={admin}/>
             </TouchableOpacity>
         </View>
