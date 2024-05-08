@@ -1,15 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import BottomBar from '../../components/BottomBar';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CardAction from '../../components/CardAction';
 
-
-export default function App() {
+export default function Home() {
   return (
     <View style={styles.container}>
-      <Text>Hola estás en el inicio</Text>
-      <BottomBar />
+      <CardAction />
     </View>
   );
 }
@@ -17,7 +13,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(55, 140, 85, 0.62)',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',

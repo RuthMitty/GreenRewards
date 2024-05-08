@@ -1,11 +1,11 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text} from "react-native";
-import accionVerde from '../../assets/images/accionVerde.jpg';
+import accionImagen from '../../assets/images/accionImagen.png';
 
 export default function CardAction(){
     return(
         <View style ={styles.contenedor}>
-            <Image style={styles.imagen} source={accionVerde}/>
+            <Image style={styles.imagen} source={accionImagen}/>
             <View style={styles.textoCont}>
                 <Text>Titulo accion</Text>
                 <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</Text>
@@ -17,19 +17,19 @@ export default function CardAction(){
 const styles = StyleSheet.create({
     contenedor: {
         width: '100%',
-        height: 95,
+        height: 15,
         backgroundColor: 'white',
         flex:1,
         flexDirection: 'row',
     },
     imagen: {
         width: 93,
-        height: '100%'
+        height: 93,
+        resizeMode: 'contain'
     },
     textoCont: {
-        height: '100%',
         paddingHorizontal: 12,
         flexDirection: 'column',
-        columnGap: 10
+        flexGrow: 0
     }
 });
