@@ -1,10 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import CardAction from '../../components/CardAction';
 
-export default function Home() {
+export
+ default function Home() {
   return (
     <View style={styles.container}>
+      <CardAction />
+      <CardAction />
       <CardAction />
     </View>
   );

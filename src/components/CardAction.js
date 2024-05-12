@@ -4,32 +4,47 @@ import accionImagen from '../../assets/images/accionImagen.png';
 
 export default function CardAction(){
     return(
-        <View style ={styles.contenedor}>
+        <TouchableOpacity style ={styles.contenedor}>
             <Image style={styles.imagen} source={accionImagen}/>
             <View style={styles.textoCont}>
-                <Text>Titulo accion</Text>
-                <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</Text>
+                <Text style={styles.title}>Titulo accion</Text>
+                <Text style={styles.descripcion}>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     contenedor: {
         width: '100%',
-        height: 15,
+        maxHeight: 93,
         backgroundColor: 'white',
-        flex:1,
         flexDirection: 'row',
+        marginBottom: 20,
+        flexGrow: 1,
+        flexShrink: 0,
+        flexBasis: 0,
     },
     imagen: {
         width: 93,
         height: 93,
-        resizeMode: 'contain'
+        resizeMode: 'cover'
     },
     textoCont: {
-        paddingHorizontal: 12,
+        paddingHorizontal: 16,
+        paddingVertical: 12,
         flexDirection: 'column',
-        flexGrow: 0
+        flexWrap: 'wrap'
+    },
+    title:{
+        fontSize: 16,
+        fontWeight: 'semibold'
+    },
+    descripcion: {
+        flexGrow: 1,
+        flexShrink: 0,
+        flexBasis: 0,
+        width: 186,
+        maxHeight: 93
     }
 });
