@@ -34,5 +34,5 @@ export const Usuarios = [
         fechaNac: '00/00/0000',
         correo: 'dani@gmail.com',
         INE: ''
-    }
+    },
 ]
