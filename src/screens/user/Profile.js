@@ -1,10 +1,15 @@
-import React from "react";
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useContext} from "react";
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Profile(){
+    const {logout} = useContext(AuthContext)
     return(
         <View style={styles.container}>
             <Text>Profile</Text>
+            <TouchableOpacity onPress={() => {logout()}}>
+                <Text>Logout</Text>
+            </TouchableOpacity>
         </View>
     );
 }
