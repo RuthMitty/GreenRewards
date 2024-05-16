@@ -23,7 +23,7 @@ export default function RegisterScreen({navigation}) {
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
-        setShow(Platform.OS === 'ios');
+        setShow(Platform.OS === "android");
         setDate(currentDate);
       };
     
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontSize: 28,
-        fontWeight: 500,
+        fontWeight: '500',
         color: "#333",
         marginBottom: 30
     },
