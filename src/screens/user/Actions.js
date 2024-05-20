@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import CardAction from '../../components/CardAction';
+import Tareas from '../../data/Tareas';
 
-export
- default function Home() {
+export default function Home() {
   return (
     <View style={styles.container}>
-      <CardAction />
-      <CardAction />
-      <CardAction />
+      <FlatList
+        data={Tareas}
+        keyExtractor={({item})=>item.id}
+        renderItem={({ item }) => <CardAction item={item} />}
+      />
     </View>
   );
 }
