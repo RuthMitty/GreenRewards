@@ -31,12 +31,6 @@ export const Tareas = [
         recompensa: 5,
     },
     {
-        id: 5,
-        titulo: 'Usar contenedor en el Comal++',
-        descripcion: 'Llevar tu propio tupper al comal al pedir comida para llevar',
-        recompensa: 5,
-    },
-    {
         id: 6,
         titulo: 'Usar transporte público',
         descripcion: 'Usar transporte publico para llegar a la facultad',
