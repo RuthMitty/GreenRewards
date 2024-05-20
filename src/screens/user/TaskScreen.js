@@ -6,7 +6,8 @@ import ImageBg from '../user/Group20.png';
 import BottomBar from '../../components/BottomBar';
 import TaskButton from '../../components/TaskButton'; 
 import { Tareas } from '../../data/Tareas';
-import { SimpleLineIcons } from '@expo/vector-icons';
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+
 
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
