@@ -7,7 +7,7 @@ const Drawer = createDrawerNavigator();
 
 const Menu = () => {
   return (
-    <NavigationContainer>
+
       <Drawer.Navigator>
       <Drawer.Screen
           name="Mis Acciones"
@@ -15,7 +15,6 @@ const Menu = () => {
           options={{ headerShown: false }} 
         />
       </Drawer.Navigator>
-    </NavigationContainer>
   );
 };
 

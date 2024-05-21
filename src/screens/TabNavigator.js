@@ -7,6 +7,11 @@ import Profile from "./user/Profile";
 import actions from "../.././assets/images/actions.png"
 import rewards from "../.././assets/images/rewards.png"
 import user from "../.././assets/images/user.png"
+import Menu from "./Menu";
+import TaskScreen from "./user/TaskScreen";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
+const Drawer = createDrawerNavigator();
 
 const Tab = createBottomTabNavigator();
 
@@ -60,7 +65,7 @@ export default function TabNavigator(){
         />
         <Tab.Screen
           name="Perfil"
-          component={Profile}
+          component={Menu}
           options={{
             tabBarButton: (props) => (
               // Personaliza tu botón aquí
@@ -70,7 +75,9 @@ export default function TabNavigator(){
               </TouchableOpacity>
             ),
           }}
+          
         />
+        
       </Tab.Navigator>
     )
 }
