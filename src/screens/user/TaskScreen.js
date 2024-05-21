@@ -51,7 +51,7 @@ const TaskScreen = () => {
         />
       </View>
 
-      <BottomBar />
+      {/* <BottomBar /> */}
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
     </View>
   );
