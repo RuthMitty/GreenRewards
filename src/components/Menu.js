@@ -1,15 +1,29 @@
 import React from "react";
-import { View, Image, FlatList, StyleSheet, Text, TouchableOpacity, ImageBackground } from "react-native";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-export default function Menu() {
-    const Drawer = createDrawerNavigator();
-    return (
-      <NavigationContainer>
-        <Drawer.Navigator>
-          <Drawer.Screen name="TaskScreen" component={TaskScreen} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    );
-  }
-  
+import TaskScreen from "../screens/user/Profile";
+import Home from "../screens/user/Actions";
+
+const Drawer = createDrawerNavigator();
+
+const Menu = () => {
+  return (
+
+      <Drawer.Navigator>
+      <Drawer.Screen
+          name="Mis Acciones"
+          component={TaskScreen}
+          options={{ headerShown: false }} 
+        />
+        <Drawer.Screen
+          name="Mis recompensas"
+          component={Home}
+          options={{ headerShown: false }} 
+        />
+        
+   
+      </Drawer.Navigator>
+  );
+};
+
+export default Menu;
