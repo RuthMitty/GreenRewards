@@ -4,7 +4,7 @@ import AuthStack from "./AuthStack";
 import TabNavigator from "./TabNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthContext } from "../context/AuthContext";
-import Menu from "./Menu";
+import Menu from "../components/Menu";
 
 export default function AppNav(){
     const {isLoading, userToken} = useContext(AuthContext)
