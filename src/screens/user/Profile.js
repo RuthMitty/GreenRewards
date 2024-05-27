@@ -3,7 +3,6 @@ import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, T
 import { useNavigation } from '@react-navigation/native';
 import circleImage from '../user/user2.png';
 import ImageBg from '../user/Group20.png';
-import BottomBar from '../../components/BottomBar';
 import TaskButton from '../../components/TaskButton'; 
 import { Tareas } from '../../data/Tareas';
 import { SimpleLineIcons } from '@expo/vector-icons';
