@@ -10,10 +10,10 @@ export default function SearchBar(){
         setResultados(Tareas.descripcion.filter((e)=>e.includes(word)))
     }
 
-    useEffect(() => {
-        word ? getResultados : setResultados(null)
-        console.log(Tareas.map((e)=>includes(word)))
-      }, [word])
+    // useEffect(() => {
+    //     word ? getResultados : setResultados(null)
+    //     console.log(Tareas.map((e)=>includes(word)))
+    //   }, [word])
       
       return (
         <View style={styles.container}>
