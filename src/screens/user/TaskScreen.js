@@ -5,7 +5,7 @@ import circleImage from '../user/user2.png';
 import ImageBg from '../user/Group20.png';
 import BottomBar from '../../components/BottomBar';
 import TaskButton from '../../components/TaskButton'; 
-import { Tareas } from '../../data/Tareas';
+import Tareas from '../../data/Tareas';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 
 
@@ -39,6 +39,7 @@ const TaskScreen = () => {
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
         <FlatList
           data={Tareas}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <TaskButton
               item={item}
@@ -46,11 +47,9 @@ const TaskScreen = () => {
               expanded={expandedTask && expandedTask.id === item.id}
             />
           )}
-          keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.taskList}
         />
       </View>
-
       {/* <BottomBar /> */}
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
     </View>

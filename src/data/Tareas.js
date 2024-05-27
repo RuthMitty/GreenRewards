@@ -1,4 +1,4 @@
-export const Tareas = [
+const Tareas = [
     {
         id: '1',
         titulo: 'Recoger colillas de cigarro',
@@ -13,7 +13,7 @@ export const Tareas = [
     },
     {
         id: '3',
-        titulo: 'Rellenar tu botella de agua en el filtro',
+        titulo: 'Rellenar botella de agua en el filtro',
         descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
         recompensa: 5,
     },
@@ -44,16 +44,18 @@ export const Tareas = [
 
 ];
 
-// export const TareasUsuario = [
-//     {
-//         id: 1,
-//         imagenes: '',
-//         comentario: 'Había un par de colillas en el coliseo y las puse en el bote de basura'
-//     },
-//     {
-//         id: 6,
-//         imagenes: '',
-//         comentario: 'Había un par de colillas en el coliseo y las puse en el bote de basura'
-//     }
+export default Tareas;
 
-// ]
+export const TareasUsuario = [
+    {
+        id: 1,
+        imagenes: '',
+        comentario: 'Había un par de colillas en el coliseo y las puse en el bote de basura'
+    },
+    {
+        id: 6,
+        imagenes: '',
+        comentario: 'Había un par de colillas en el coliseo y las puse en el bote de basura'
+    }
+
+]
