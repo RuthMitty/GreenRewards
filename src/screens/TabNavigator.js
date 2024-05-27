@@ -74,7 +74,7 @@ export default function TabNavigator(){
                 <Text style={styles.textMenu}>Perfil</Text>
               </TouchableOpacity>
             ),
-          }}
+          headerShown: false}}
           
         />
         

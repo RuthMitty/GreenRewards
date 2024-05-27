@@ -6,7 +6,38 @@ export const Usuarios = [
         contraseña: 'contraseñasegura',
         fechaNac: '14/01/2003',
         correo: 'sarahi@gmail.com',
-        INE: ''
+        INE: '',
+        puntos: 0, 
+        tareasEnProceso: [
+            {
+                id: 1,
+                titulo: 'Recoger colillas de cigarro',
+                descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
+                recompensa: 10,
+        
+            },
+            {
+                id: 2,
+                titulo: 'Recolectar basura',
+                descripcion: 'Recolecta 3 items de basura en tu escuela',
+                recompensa: 3,
+            },
+            {
+                id: 3,
+                titulo: 'Rellenar tu botella de agua en el filtro',
+                descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
+                recompensa: 5,
+            },
+        ],
+        recompensasUsuario: [
+            {
+                id: 1,
+                titulo: "Recompensa de prueba",
+                descripcion: "Esta en la descripcion de un recompensa de prueba",
+                puntos: 10
+            }
+        ]
+
     },
     {
         id: 2,
@@ -15,7 +46,30 @@ export const Usuarios = [
         contraseña: 'samsclub',
         fechaNac: '12/05/2003',
         correo: 'sams@gmail.com',
-        INE: ''
+        INE: '',
+        puntos: 0, 
+        tareasEnProceso: [
+            {
+                id: 1,
+                titulo: 'Recoger colillas de cigarro',
+                descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
+                recompensa: 10,
+        
+            },
+            {
+                id: 2,
+                titulo: 'Recolectar basura',
+                descripcion: 'Recolecta 3 items de basura en tu escuela',
+                recompensa: 3,
+            },
+            {
+                id: 3,
+                titulo: 'Rellenar tu botella de agua en el filtro',
+                descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
+                recompensa: 5,
+            },
+        ],
+        recompensasUsuario: {}
     },
     {
         id: 3,
@@ -24,7 +78,30 @@ export const Usuarios = [
         contraseña: 'contraseña123',
         fechaNac: '01/06/2001',
         correo: 'lud@gmail.com',
-        INE: ''
+        INE: '',
+        puntos: 0, 
+        tareasEnProceso: [
+            {
+                id: 1,
+                titulo: 'Recoger colillas de cigarro',
+                descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
+                recompensa: 10,
+        
+            },
+            {
+                id: 2,
+                titulo: 'Recolectar basura',
+                descripcion: 'Recolecta 3 items de basura en tu escuela',
+                recompensa: 3,
+            },
+            {
+                id: 3,
+                titulo: 'Rellenar tu botella de agua en el filtro',
+                descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
+                recompensa: 5,
+            },
+        ],
+        recompensasUsuario: {}
     },
     {
         id: 4,
@@ -33,6 +110,29 @@ export const Usuarios = [
         contraseña: 'sushiii',
         fechaNac: '00/00/0000',
         correo: 'dani@gmail.com',
-        INE: ''
+        INE: '',
+        puntos: 0, 
+        tareasEnProceso: [
+            {
+                id: 1,
+                titulo: 'Recoger colillas de cigarro',
+                descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
+                recompensa: 10,
+        
+            },
+            {
+                id: 2,
+                titulo: 'Recolectar basura',
+                descripcion: 'Recolecta 3 items de basura en tu escuela',
+                recompensa: 3,
+            },
+            {
+                id: 3,
+                titulo: 'Rellenar tu botella de agua en el filtro',
+                descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
+                recompensa: 5,
+            },
+        ],
+        recompensasUsuario: {}
     },
 ]
