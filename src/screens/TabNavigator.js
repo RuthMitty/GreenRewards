@@ -7,8 +7,8 @@ import Profile from "./user/Profile";
 import actions from "../.././assets/images/actions.png"
 import rewards from "../.././assets/images/rewards.png"
 import user from "../.././assets/images/user.png"
-import Menu from "./Menu";
-import TaskScreen from "./user/TaskScreen";
+import Menu from "../components/Menu";
+import TaskScreen from "./user/Profile";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Drawer = createDrawerNavigator();
@@ -41,6 +41,7 @@ export default function TabNavigator(){
           name="Acciones"
           component={Home}
           options={{
+            headerShown: false,
             tabBarButton: (props) => (
               // Personaliza tu botón aquí
               <TouchableOpacity style={styles.botonMenu} {...props}>
@@ -54,6 +55,7 @@ export default function TabNavigator(){
           name="Recompensas"
           component={Rewards}
           options={{
+            headerShown: false,
             tabBarButton: (props) => (
               // Personaliza tu botón aquí
               <TouchableOpacity style={styles.botonMenu} {...props}>
@@ -67,6 +69,7 @@ export default function TabNavigator(){
           name="Perfil"
           component={Menu}
           options={{
+            headerShown: false,
             tabBarButton: (props) => (
               // Personaliza tu botón aquí
               <TouchableOpacity style={styles.botonMenu} {...props}>
