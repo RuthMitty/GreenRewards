@@ -9,16 +9,14 @@ import { useContext } from 'react';
 
 const Profile = () => {
 
-    const {user} = useContext(AuthContext)
-
-    console.log(user)
+  const {user} = useContext(AuthContext)
 
   return (
     <View style={styles.container}>
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
-      <Text style={styles.points}>Puntos: 300</Text>
+      <Text style={styles.points}>Puntos: {user.puntos}</Text>
       <View style={styles.dataContainer}>
         <View style={styles.data}>
             <Text style={styles.dataTitle}>Nombre</Text>

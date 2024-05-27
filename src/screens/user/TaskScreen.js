@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import circleImage from '../user/user2.png';
@@ -7,10 +7,13 @@ import BottomBar from '../../components/BottomBar';
 import TaskButton from '../../components/TaskButton'; 
 import { Tareas } from '../../data/Tareas';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { AuthContext } from '../../context/AuthContext';
 
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
   const navigation = useNavigation();
+
+  const {user} = useContext(AuthContext)
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -37,7 +40,7 @@ const TaskScreen = () => {
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
         <FlatList
-          data={Tareas}
+          data={user.tareasEnProceso}
           renderItem={({ item }) => (
             <TaskButton
               item={item}

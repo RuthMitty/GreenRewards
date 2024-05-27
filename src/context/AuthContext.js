@@ -19,6 +19,7 @@ export const AuthProvider = ({children}) => {
             await AsyncStorage.setItem("userToken", "Logged In!")
             await AsyncStorage.setItem("usuario", JSON.stringify(busqueda))
             console.log("Usuario guardado")
+        
         } else{
             console.log("Usuario y/o contraseña incorrectos")
         }
@@ -33,11 +34,24 @@ export const AuthProvider = ({children}) => {
         setIsLoading(false)
     }
 
+    // const getUser = async() => {
+    //     try {
+    //         let user = await AsyncStorage.getItem("usuario")
+    //         user = JSON.parse(user)
+    //         setUser(user)
+    //     } catch(e) {
+    //         console.log("Get user error ", e)
+    //     }
+    // }
+
     const isLoggedIn = async() => {
         try {
             setIsLoading(true)
             let userToken = await AsyncStorage.getItem("userToken")
             setUserToken(userToken)
+            let user = await AsyncStorage.getItem("usuario")
+            user = JSON.parse(user)
+            setUser(user)
             setIsLoading(false)
         } catch(e) {
             console.log("isLoggedIn error ", e)
@@ -45,24 +59,9 @@ export const AuthProvider = ({children}) => {
         
     }
 
-    const getUser = async() => {
-        try {
-            let user = await AsyncStorage.getItem("usuario")
-            user = JSON.parse(user)
-            setUser(user)
-        } catch(e) {
-            console.log("Get user error ", e)
-        }
-    }
-
     useEffect(() => {
         isLoggedIn()
-    },[])
-
-    useEffect(() => {
-        getUser()
-        console.log(user)
-    },[])
+    },[userToken])
 
   
 
