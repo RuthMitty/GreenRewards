@@ -13,7 +13,7 @@ const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
   const navigation = useNavigation();
 
-  const {user} = useContext(AuthContext)
+  const user = useContext(AuthContext)
 
   const openDrawer = () => {
     navigation.openDrawer();

@@ -19,7 +19,6 @@ export const AuthProvider = ({children}) => {
             await AsyncStorage.setItem("userToken", "Logged In!")
             await AsyncStorage.setItem("usuario", JSON.stringify(busqueda))
             console.log("Usuario guardado")
-        
         } else{
             console.log("Usuario y/o contraseña incorrectos")
         }
