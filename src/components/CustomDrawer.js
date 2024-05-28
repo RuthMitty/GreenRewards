@@ -8,17 +8,17 @@ import { AuthContext } from '../context/AuthContext'
 export default function CustomDrawer(props){
     const {logout} = useContext(AuthContext)
     return (
-        <View style={{flex:1}}>
+        <View style={{flex:1, paddingBottom: 300}}>
             <DrawerContentScrollView {...props}>
                 <DrawerItemList {...props}/>
             </DrawerContentScrollView>
             <View style={{padding:20, borderTopWidth:1, borderTopColor: "#ccc"}}>
-            <TouchableOpacity onPress={() => {logout()}}>
-                <View style={{flexDirection: "row", alignItems:"center"}}>
-                    {/* <Ionicons name="exit-outline" size={22}/> */}
-                    <Text>Sign Out</Text>
-                </View>
-            </TouchableOpacity>
+                <TouchableOpacity onPress={() => {logout()}}>
+                    <View style={{flexDirection: "row", alignItems:"center"}}>
+                        {/* <Ionicons name="exit-outline" size={22}/> */}
+                        <Text style={{color: 'black'}}>Sign Out</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         </View>
         

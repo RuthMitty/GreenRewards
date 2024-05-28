@@ -1,28 +1,25 @@
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import TaskScreen from "../screens/user/Profile";
-import MyRewards from "../screens/user/MyRewards";
+import TaskScreen from "./user/TaskScreen";
+import CustomDrawer from "../components/CustomDrawer"
+import Profile from "./user/Profile"
 
 const Drawer = createDrawerNavigator();
 
 const Menu = () => {
   return (
 
-      <Drawer.Navigator>
+    <Drawer.Navigator drawerContent={props => <CustomDrawer {...props}/> }>
+    <Drawer.Screen
+        name="Mis Acciones"
+        component={TaskScreen}
+        options={{ headerShown: false }} 
+      />
       <Drawer.Screen
-          name="Mis Acciones"
-          component={TaskScreen}
-          options={{ headerShown: false }} 
-        />
-        <Drawer.Screen
-          name="Mis recompensas"
-          component={MyRewards}
-          options={{ headerShown: false }} 
-        />
-        
-   
-      </Drawer.Navigator>
+        name="Mis Datos"
+        component={Profile}
+      />
+  </Drawer.Navigator>
   );
 };
 

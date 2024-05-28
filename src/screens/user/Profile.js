@@ -13,7 +13,7 @@ const Profile = () => {
 
   return (
     <View style={styles.container}>
-      {console.log(user)}
+      {/* {console.log(user)} */}
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
