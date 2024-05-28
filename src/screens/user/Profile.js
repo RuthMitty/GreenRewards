@@ -9,10 +9,11 @@ import { useContext } from 'react';
 
 const Profile = () => {
 
-  const {user} = useContext(AuthContext)
+  const user = useContext(AuthContext)
 
   return (
     <View style={styles.container}>
+      {console.log(user)}
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
