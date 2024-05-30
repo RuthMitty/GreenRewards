@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import circleImage from '../user/user2.png';
@@ -7,13 +7,10 @@ import BottomBar from '../../components/BottomBar';
 import TaskButton from '../../components/TaskButton'; 
 import { Tareas } from '../../data/Tareas';
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { AuthContext } from '../../context/AuthContext';
 
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
   const navigation = useNavigation();
-
-  const user = useContext(AuthContext)
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -21,7 +18,7 @@ const TaskScreen = () => {
 
   const handleButtonPress = (item) => {
     if (expandedTask && expandedTask.id === item.id) {
-      setExpandedTask(null); // Close if the same task is pressed again
+      setExpandedTask(null); 
     } else {
       setExpandedTask(item);
     }
@@ -40,7 +37,7 @@ const TaskScreen = () => {
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
         <FlatList
-          data={user.tareasEnProceso}
+          data={Tareas}
           renderItem={({ item }) => (
             <TaskButton
               item={item}
@@ -48,6 +45,7 @@ const TaskScreen = () => {
               expanded={expandedTask && expandedTask.id === item.id}
             />
           )}
+          keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.taskList}
         />
       </View>
