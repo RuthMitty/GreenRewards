@@ -6,17 +6,29 @@ import ImageBg from '../user/Group20.png';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import { SimpleLineIcons } from '@expo/vector-icons';
+
 
 const Profile = () => {
+
+  const navigation = useNavigation();
+  const openDrawer = () => {
+      navigation.openDrawer();
+    };
 
   const user = useContext(AuthContext)
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={openDrawer} style={styles.menuButton}>
+        <SimpleLineIcons name="menu" size={24} color="black" />
+      </TouchableOpacity>
       {/* {console.log(user)} */}
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
+
+
       <Text style={styles.points}>Puntos: {user.puntos}</Text>
       <View style={styles.dataContainer}>
         <View style={styles.data}>
@@ -38,8 +50,8 @@ const Profile = () => {
         
         
       </View>
-
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
+
     </View>
   );
 };
@@ -105,7 +117,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: "#ccc",
     marginBottom: 10
-  }
+  },
+  menuButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    zIndex: 1,
+  },
 });
 
 export default Profile;

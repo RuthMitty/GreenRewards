@@ -3,17 +3,15 @@ import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, T
 import { useNavigation } from '@react-navigation/native';
 import circleImage from '../user/user2.png';
 import ImageBg from '../user/Group20.png';
-import BottomBar from '../../components/BottomBar';
-import TaskButton from '../../components/TaskButton'; 
-import { Tareas } from '../../data/Tareas';
+import TaskButton from '../../components/TaskButton';
+import { Usuarios } from '../../data/Usuarios';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { AuthContext } from '../../context/AuthContext';
 
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
   const navigation = useNavigation();
-
-  const user = useContext(AuthContext)
+  const user = useContext(AuthContext);
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -21,26 +19,26 @@ const TaskScreen = () => {
 
   const handleButtonPress = (item) => {
     if (expandedTask && expandedTask.id === item.id) {
-      setExpandedTask(null); // Close if the same task is pressed again
+      setExpandedTask(null);
     } else {
       setExpandedTask(item);
     }
   };
+
+  const allTareasEnProceso = Usuarios.flatMap((usuario) => usuario.tareasEnProceso);
 
   return (
     <View style={styles.container}>
       <View style={styles.fixedImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
-
       <TouchableOpacity onPress={openDrawer} style={styles.menuButton}>
         <SimpleLineIcons name="menu" size={24} color="black" />
       </TouchableOpacity>
-
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
         <FlatList
-          data={user.tareasEnProceso}
+          data={allTareasEnProceso}
           renderItem={({ item }) => (
             <TaskButton
               item={item}
@@ -51,7 +49,6 @@ const TaskScreen = () => {
           contentContainerStyle={styles.taskList}
         />
       </View>
-
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
     </View>
   );
@@ -76,18 +73,19 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-    marginBottom: 20,
+    
   },
   taskContainer: {
     width: '100%',
     paddingHorizontal: 50,
-    marginTop: '75%',
+    marginTop: '90%',
   },
   taskTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'green',
     alignSelf: 'flex-start',
+    marginBottom: 10
   },
   menuButton: {
     position: 'absolute',
@@ -97,11 +95,11 @@ const styles = StyleSheet.create({
   },
   fixedImageContainer: {
     position: 'absolute',
-    top: 150,
+    top: 130,
     left: 0,
     right: 0,
     justifyContent: 'center',
-    alignItems: 'center', 
+    alignItems: 'center',
   },
 });
 
