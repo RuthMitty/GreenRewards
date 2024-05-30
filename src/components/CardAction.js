@@ -20,7 +20,7 @@ const CardAction = ({ item }) => {
             <Image style={styles.flechita} source={equis} />
           </TouchableOpacity>
           <View style={styles.textoContExp}>
-            <Text style={styles.title}>{item.titulo}</Text>
+            <Text style={styles.titleExp}>{item.titulo}</Text>
             <Text style={styles.descripcionExp}>{item.descripcion}</Text>
             <Text style={styles.recompensas}>
               {" "}
@@ -100,10 +100,17 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: "semibold",
+    fontWeight: "600",
     color: "#378C55",
     width: "100%",
     textAlign: "left",
+  },
+  titleExp: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#378C55",
+    width: "100%",
+    textAlign: "center",
   },
   descripcion: {
     flexGrow: 1,
@@ -112,11 +119,13 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingRight: 30,
     maxHeight: 93,
+    fontSize: 15
   },
   descripcionExp: {
     width: "100%",
-    textAlign: "left",
-    marginBottom: 20,
+    textAlign: "center",
+    marginBottom: 10,
+    fontSize: 15
   },
   textoContExp: {
     flexGrow: 1,
@@ -130,6 +139,7 @@ const styles = StyleSheet.create({
   recompensas: {
     color: "#3391A6",
     fontSize: 14,
+    fontWeight: '600'
   },
   guardar: {
     padding: 10,
@@ -141,6 +151,7 @@ const styles = StyleSheet.create({
     width: "40%",
     alignSelf: "center",
     textAlign: "center",
+    fontWeight: "600"
   },
   completar: {
     backgroundColor: "#3B8C75",
@@ -148,7 +159,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     color: "white",
     fontSize: 18,
-    fontWeight: "semibold",
+    fontWeight: "bold",
     borderRadius: 4,
     width: "50%",
     alignSelf: "center",

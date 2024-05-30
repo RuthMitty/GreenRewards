@@ -29,6 +29,7 @@ const TaskScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.level}>Nivel: Protector del medio ambiente</Text>
       <View style={styles.fixedImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
@@ -47,6 +48,7 @@ const TaskScreen = () => {
             />
           )}
           contentContainerStyle={styles.taskList}
+          showsVerticalScrollIndicator={false}
         />
       </View>
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
   taskContainer: {
     width: '100%',
     paddingHorizontal: 50,
-    marginTop: '90%',
+    marginTop: '60%',
   },
   taskTitle: {
     fontSize: 20,
@@ -101,6 +103,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  level: {
+    marginTop: '50%',
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingVertical: 10,
+    color: '#378C55',
+    fontSize: 15,
+    width: '50%'
+  }
 });
 
 export default TaskScreen;

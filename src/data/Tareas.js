@@ -3,7 +3,7 @@ const Tareas = [
         id: '1',
         titulo: 'Recoger colillas de cigarro',
         descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
-        recompensa: 10,
+        recompensa: 10
     },
     {
         id: '2',

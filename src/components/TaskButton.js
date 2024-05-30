@@ -15,11 +15,12 @@ export default function TaskButton({ item, onPress, expanded }) {
         <Animated.View style={styles.detailContainer}>
           <Text style={styles.descripcion}>{item.descripcion}</Text>
           <Text style={styles.rewards}>{item.recompensa}pts de recompensa</Text>
-          <TouchableOpacity>
-            <Text style={styles.eliminar}>Eliminar tarea</Text>
-          </TouchableOpacity>
+          <Text style={styles.estatus}> Estatus: {item.status}</Text>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Completar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.eliminar}>Eliminar tarea</Text>
           </TouchableOpacity>
         </Animated.View>
       )}
@@ -79,7 +80,8 @@ const styles = StyleSheet.create({
   eliminar: {
     color: 'black',
     marginBottom: 10,
-    fontSize: 16
+    fontSize: 16,
+    paddingTop: 10
   },
   button: {
     width: '60%',
@@ -98,5 +100,10 @@ const styles = StyleSheet.create({
     color: '#3391A6',
     marginBottom: 10,
     fontSize: 16
+  },
+  estatus: {
+    textAlign: 'center',
+    color: 'gray',
+    paddingVertical: 10
   }
 });

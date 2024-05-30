@@ -20,6 +20,7 @@ const Profile = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.level}>Nivel: Protector del medio ambiente</Text>
       <TouchableOpacity onPress={openDrawer} style={styles.menuButton}>
         <SimpleLineIcons name="menu" size={24} color="black" />
       </TouchableOpacity>
@@ -27,7 +28,6 @@ const Profile = () => {
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
-
 
       <Text style={styles.points}>Puntos: {user.puntos}</Text>
       <View style={styles.dataContainer}>
@@ -124,6 +124,15 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 1,
   },
+  level: {
+    top: -35,
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingVertical: 10,
+    color: '#378C55',
+    fontSize: 15,
+    width: '50%'
+  }
 });
 
 export default Profile;

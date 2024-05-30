@@ -13,6 +13,7 @@ export default function Home() {
         data={Tareas}
         keyExtractor={item=>item.id.toString()}
         renderItem={({item}) => (<CardAction item={item} />)}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
