@@ -17,6 +17,7 @@ const MyRewards = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.level}>Nivel: Protector del medio ambiente</Text>
       <View style={styles.fixedImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   voucherInfo: {
-    marginTop: '45%',
+    marginTop: '60%',
   },
   title: {
     fontSize: 20,
@@ -66,7 +67,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderStyle: 'dashed',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
   voucherText: {
       fontSize: 18,
@@ -113,6 +115,14 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 1,
   },
+  level: {
+    fontWeight: '700',
+    textAlign: 'center',
+    color: '#378C55',
+    fontSize: 15,
+    width: '50%',
+    top: -40
+  }
 });
 
 export default MyRewards;

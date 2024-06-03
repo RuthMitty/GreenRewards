@@ -14,6 +14,7 @@ export const Usuarios = [
                 titulo: 'Recoger colillas de cigarro',
                 descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
                 recompensa: 10,
+                status: 'En revision'
         
             },
             {
@@ -21,12 +22,14 @@ export const Usuarios = [
                 titulo: 'Recolectar basura',
                 descripcion: 'Recolecta 3 items de basura en tu escuela',
                 recompensa: 3,
+                status: 'En revision'
             },
             {
                 id: 3,
                 titulo: 'Rellenar tu botella de agua en el filtro',
                 descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
                 recompensa: 5,
+                status: 'Rechazada'
             },
         ],
         recompensasUsuario: [
@@ -54,6 +57,7 @@ export const Usuarios = [
                 titulo: 'Recoger colillas de cigarro',
                 descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
                 recompensa: 10,
+                status: 'Sin empezar'
         
             },
             {
@@ -61,12 +65,14 @@ export const Usuarios = [
                 titulo: 'Recolectar basura',
                 descripcion: 'Recolecta 3 items de basura en tu escuela',
                 recompensa: 3,
+                status: 'Sin empezar'
             },
             {
                 id: 3,
                 titulo: 'Rellenar tu botella de agua en el filtro',
                 descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
                 recompensa: 5,
+                status: 'En revisión'
             },
         ],
         recompensasUsuario: {}
@@ -86,6 +92,7 @@ export const Usuarios = [
                 titulo: 'Recoger colillas de cigarro',
                 descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
                 recompensa: 10,
+                status: 'Sin empezar'
         
             },
             {
@@ -93,12 +100,14 @@ export const Usuarios = [
                 titulo: 'Recolectar basura',
                 descripcion: 'Recolecta 3 items de basura en tu escuela',
                 recompensa: 3,
+                status: 'Sin empezar'
             },
             {
                 id: 3,
                 titulo: 'Rellenar tu botella de agua en el filtro',
                 descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
                 recompensa: 5,
+                status: 'En revisión'
             },
         ],
         recompensasUsuario: {}
@@ -118,6 +127,7 @@ export const Usuarios = [
                 titulo: 'Recoger colillas de cigarro',
                 descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
                 recompensa: 10,
+                status: 'En revisión'
         
             },
             {
@@ -125,12 +135,14 @@ export const Usuarios = [
                 titulo: 'Recolectar basura',
                 descripcion: 'Recolecta 3 items de basura en tu escuela',
                 recompensa: 3,
+                status: 'Sin empezar'
             },
             {
                 id: 3,
                 titulo: 'Rellenar tu botella de agua en el filtro',
                 descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
                 recompensa: 5,
+                status: 'Sin empezar'
             },
         ],
         recompensasUsuario: {}
