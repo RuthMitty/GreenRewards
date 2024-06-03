@@ -22,7 +22,7 @@ export default function Rewards(){
           <SearchBar
             value={search}
             OnChangeText={setSearch}
-            placeholder="Recompensas"
+            placeholder="Buscar..."
           />
 
             <FlatList
