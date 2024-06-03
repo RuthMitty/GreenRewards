@@ -2,27 +2,27 @@ import React, {useState, useEffect} from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
 import Tareas from '../data/Tareas';
 
-export default function SearchBar(){
-    const [word, setWord] = useState('');
-    const [resultados, setResultados] = useState('');
+export default function SearchBar({value, OnChangeText, placeholder}){
+    // const [word, setWord] = useState('');
+    // const [resultados, setResultados] = useState('');
 
-    function getResultados(){
-        setResultados(Tareas.descripcion.filter((e)=>e.includes(word)))
-    }
+    // function getResultados(){
+    //     setResultados(Tareas.descripcion.filter((e)=>e.includes(word)))
+    // }
 
-    // useEffect(() => {
-    //     word ? getResultados : setResultados(null)
-    //     console.log(Tareas.map((e)=>includes(word)))
-    //   }, [word])
+    // // useEffect(() => {
+    // //     word ? getResultados : setResultados(null)
+    // //     console.log(Tareas.map((e)=>includes(word)))
+    // //   }, [word])
       
       return (
         <View style={styles.container}>
             <View style={styles.inputWrapper}>
                 <TextInput 
                     style={styles.input}
-                    placeholder='Buscar...'
-                    value={word}
-                    onChangeText={(text) => setWord(text)} 
+                    placeholder={placeholder}
+                    value={value}
+                    onChangeText={OnChangeText} 
                 />
             </View>
         </View>
