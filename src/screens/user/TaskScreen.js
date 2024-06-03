@@ -11,7 +11,7 @@ import { AuthContext } from '../../context/AuthContext';
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
   const navigation = useNavigation();
-  const user = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -39,7 +39,8 @@ const TaskScreen = () => {
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
         <FlatList
-          data={allTareasEnProceso}
+          data={user.tareasEnProceso}
+          keyExtractor={item=>(item.id.toString())}
           renderItem={({ item }) => (
             <TaskButton
               item={item}
