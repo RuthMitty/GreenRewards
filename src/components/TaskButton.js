@@ -3,10 +3,11 @@ import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity, View, StyleSheet, Text, Animated } from "react-native";
 
 export default function TaskButton({ item, onPress, expanded }) {
+  const titulop = item.titulo;
   return (
     <View>
       <TouchableOpacity style={styles.taskButton} onPress={onPress}>
-        <Text style={styles.taskText}>{item.titulo}</Text>
+        <Text style={styles.taskText}>{titulop.slice(0,25)}...</Text>
         <View style={styles.iconContainer}>
           <AntDesign name={expanded ? "up" : "down"} size={24} color="#868686" />
         </View>

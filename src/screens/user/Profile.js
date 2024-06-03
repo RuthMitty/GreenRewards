@@ -31,7 +31,6 @@ const Profile = () => {
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
-
       <Text style={styles.points}>Puntos: {user.puntos}</Text>
       <View style={styles.dataContainer}>
         <View style={styles.data}>
@@ -63,8 +62,6 @@ const Profile = () => {
           setModalOpen={setModalOpen}
         />
       </Modal>
-      
-
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
 
     </View>
@@ -139,17 +136,15 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 1,
   },
-<<<<<<< HEAD
   level: {
-    top: -35,
+    top: -15,
     fontWeight: '700',
     textAlign: 'center',
     paddingVertical: 10,
     color: '#378C55',
     fontSize: 15,
     width: '50%'
-  }
-=======
+  },
   editButton: {
     flexDirection: "row",
     backgroundColor: "green",
@@ -162,7 +157,6 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   
->>>>>>> main
 });
 
 export default Profile;

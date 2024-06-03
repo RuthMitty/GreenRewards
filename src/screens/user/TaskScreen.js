@@ -76,12 +76,13 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-    
   },
   taskContainer: {
     width: '100%',
     paddingHorizontal: 50,
-    marginTop: '60%',
+    marginTop: '75%',
+    height:'52%',
+    overflow: 'scroll'
   },
   taskTitle: {
     fontSize: 20,
@@ -105,14 +106,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   level: {
-    marginTop: '50%',
+    position: 'absolute',
+    top: 50,
     fontWeight: '700',
     textAlign: 'center',
     paddingVertical: 10,
     color: '#378C55',
     fontSize: 15,
     width: '50%'
-  }
+  },
 });
 
 export default TaskScreen;
