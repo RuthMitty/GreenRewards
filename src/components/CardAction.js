@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
-import accionImagen from "../../assets/images/accionImagen.png";
 import flecha from "../../assets/images/flechita.png";
 import equis from "../../assets/images/equis.png";
 
@@ -17,6 +16,7 @@ const CardAction = ({ item }) => {
               setExpanded(false);
             }}
           >
+            {}
             <Image style={styles.flechita} source={equis} />
           </TouchableOpacity>
           <View style={styles.textoContExp}>
@@ -41,7 +41,7 @@ const CardAction = ({ item }) => {
           }}
           style={styles.contenedor}
         >
-          <Image style={styles.imagen} source={accionImagen} />
+          <Image style={styles.imagen} source={item.img}/>
           <View style={styles.textoCont}>
             <Text style={styles.title}>{item.titulo}</Text>
             <Text style={styles.descripcion}>
