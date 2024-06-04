@@ -11,7 +11,7 @@ import { AuthContext } from '../../context/AuthContext';
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
   const navigation = useNavigation();
-  const {user} = useContext(AuthContext);
+  const {user, setUser} = useContext(AuthContext);
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -25,7 +25,15 @@ const TaskScreen = () => {
     }
   };
 
-  const allTareasEnProceso = Usuarios.flatMap((usuario) => usuario.tareasEnProceso);
+  const deleteTask = (taskId) => {
+    const updatedTasks = user.tareasEnProceso.filter(task => task.id !== taskId);
+    setUser({
+      ...user,
+      tareasEnProceso: updatedTasks,
+    });
+  };
+
+  // const allTareasEnProceso = Usuarios.flatMap((usuario) => usuario.tareasEnProceso);
 
   return (
     <View style={styles.container}>
@@ -46,6 +54,7 @@ const TaskScreen = () => {
               item={item}
               onPress={() => handleButtonPress(item)}
               expanded={expandedTask && expandedTask.id === item.id}
+              onDelete={() => deleteTask(item.id)}
             />
           )}
           contentContainerStyle={styles.taskList}

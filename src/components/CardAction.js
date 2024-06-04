@@ -1,10 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 import flecha from "../../assets/images/flechita.png";
 import equis from "../../assets/images/equis.png";
+import {AuthContext} from "../context/AuthContext"
+import SaveTaskModal from "./SaveTaskModal";
+import Modal from "./Modal";
 
 const CardAction = ({ item }) => {
+  const {user, setUser} = useContext(AuthContext)
+  const [type, setType] = useState("")
   const [expanded, setExpanded] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const saveTask = () => {
+    console.log(item)
+    
+    // Verificar si la tarea ya está en tareasEnProceso
+    const tareaExistente = user.tareasEnProceso.find((tarea) => tarea.id === item.id);
+
+    if (!tareaExistente) {
+      // Crear la nueva tarea con el estado "Sin empezar"
+      const nuevaTarea = { ...item, status: "Sin empezar" };
+
+      // Actualizar el estado del usuario con la nueva tarea agregada
+      const updatedUser = {
+        ...user,
+        tareasEnProceso: [...user.tareasEnProceso, nuevaTarea],
+      };
+
+      // Actualizar el usuario en el contexto
+      setUser(updatedUser);
+      setType("new")
+      setModalOpen(true)
+    } else{
+      console.log("Esa tarea ya esta registrada")
+      setType("alreadySaved")
+      setModalOpen(true)
+    }
+  }
 
   return (
     <View>
@@ -27,7 +60,7 @@ const CardAction = ({ item }) => {
               {item.recompensa} pts de recompensa{" "}
             </Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={saveTask}>
             <Text style={styles.guardar}>Guardar tarea</Text>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -51,6 +84,13 @@ const CardAction = ({ item }) => {
           <Image style={styles.flechita} source={flecha} />
         </TouchableOpacity>
       )}
+      <Modal isOpen={modalOpen}>
+        <SaveTaskModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          type={type}
+        />
+      </Modal>
     </View>
   );
 };
