@@ -2,7 +2,7 @@ import React from 'react';
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity, View, StyleSheet, Text, Animated } from "react-native";
 
-export default function TaskButton({ item, onPress, expanded }) {
+export default function TaskButton({ item, onPress, expanded, onDelete }) {
   const titulop = item.titulo;
   return (
     <View>
@@ -20,7 +20,7 @@ export default function TaskButton({ item, onPress, expanded }) {
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Completar</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onDelete}>
             <Text style={styles.eliminar}>Eliminar tarea</Text>
           </TouchableOpacity>
         </Animated.View>
