@@ -24,14 +24,13 @@ const Profile = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.level}>Nivel: Protector del medio ambiente</Text>
       <TouchableOpacity onPress={openDrawer} style={styles.menuButton}>
         <SimpleLineIcons name="menu" size={24} color="black" />
       </TouchableOpacity>
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
-
-
       <Text style={styles.points}>Puntos: {user.puntos}</Text>
       <View style={styles.dataContainer}>
         <View style={styles.data}>
@@ -63,8 +62,6 @@ const Profile = () => {
           setModalOpen={setModalOpen}
         />
       </Modal>
-      
-
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
 
     </View>
@@ -138,6 +135,15 @@ const styles = StyleSheet.create({
     top: 40,
     left: 20,
     zIndex: 1,
+  },
+  level: {
+    top: -15,
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingVertical: 10,
+    color: '#378C55',
+    fontSize: 15,
+    width: '50%'
   },
   editButton: {
     flexDirection: "row",

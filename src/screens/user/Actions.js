@@ -27,6 +27,7 @@ export default function Home() {
         data={filteredTasks}
         keyExtractor={item=>(item.id.toString())}
         renderItem={({item}) => (<CardAction item={item} />)}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
