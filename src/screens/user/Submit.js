@@ -4,9 +4,12 @@ import * as ImagePicker from "expo-image-picker";
 import ImageBg from "../user/Group20.png";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Submit() {
+  const navigation = useNavigation();
   const route = useRoute();
+
 
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
@@ -52,6 +55,8 @@ export default function Submit() {
     setDescription("");
 
     setModalVisible(true);
+    navigation.navigate("Perfil")
+
   };
 
   return (
