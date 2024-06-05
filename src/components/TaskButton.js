@@ -5,6 +5,18 @@ import { TouchableOpacity, View, StyleSheet, Text, Animated } from "react-native
 
 export default function TaskButton({ item, onPress, expanded, onDelete }) {
   const titulop = item.titulo;
+  
+    const navigation = useNavigation();
+
+  const openSubmitScreen = () => {
+    if (item && titulop) {
+      navigation.navigate('Submit', { titulo: item.titulo });
+    } else {
+      console.error("El item o el título no está definido");
+    }
+
+
+  
   return (
     <View>
       <TouchableOpacity style={styles.taskButton} onPress={onPress}>
@@ -17,6 +29,10 @@ export default function TaskButton({ item, onPress, expanded, onDelete }) {
         <Animated.View style={styles.detailContainer}>
           <Text style={styles.descripcion}>{item.descripcion}</Text>
           <Text style={styles.rewards}>{item.recompensa}pts de recompensa</Text>
+          <TouchableOpacity>
+            <Text style={styles.eliminar}>Eliminar tarea</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={openSubmitScreen}>
           <Text style={styles.estatus}> Estatus: {item.status}</Text>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Completar</Text>
