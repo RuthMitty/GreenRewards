@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import React, { useContext, useState } from 'react';
-import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import circleImage from '../user/user2.png';
-import ImageBg from '../user/Group20.png';
-import TaskButton from '../../components/TaskButton';
-import { Usuarios } from '../../data/Usuarios';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { AuthContext } from '../../context/AuthContext';
-import EmptyScreen from '../../components/EmptyScreen';
-=======
 import React, { useContext, useState, useEffect } from "react";
 import {
   View,
@@ -27,7 +15,6 @@ import ImageBg from "../user/Group20.png";
 import TaskButton from "../../components/TaskButton";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { AuthContext } from "../../context/AuthContext";
->>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
 
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
@@ -90,17 +77,10 @@ const TaskScreen = () => {
       </TouchableOpacity>
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
-<<<<<<< HEAD
-        {user.tareasEnProceso.length > 0 ? (
-          <FlatList
-            data={user.tareasEnProceso}
-            keyExtractor={item=>(item.id.toString())}
-=======
         {tasks.length > 0 ? (
           <FlatList
             data={tasks}
             keyExtractor={(item) => item.id.toString()}
->>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
             renderItem={({ item }) => (
               <TaskButton
                 item={item}
@@ -113,19 +93,8 @@ const TaskScreen = () => {
             showsVerticalScrollIndicator={false}
           />
         ) : (
-<<<<<<< HEAD
-          <EmptyScreen
-            object="tareas"
-            textColor="green"
-          />
-        )
-
-        }
-        
-=======
           <Text style={styles.noTasksText}>No se encontraron tareas disponibles</Text>
         )}
->>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
       </View>
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
     </View>
