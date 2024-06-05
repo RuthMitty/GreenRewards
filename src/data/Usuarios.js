@@ -131,9 +131,6 @@ export const Usuarios = [
                 status: 'Rechazada'
             },
         ],
-<<<<<<< HEAD
-        recompensasUsuario: []
-=======
         recompensasUsuario: [
             {
                 id: 1,
@@ -142,7 +139,6 @@ export const Usuarios = [
                 puntos: 10
             }
         ]
->>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
     },
    
 ]
