@@ -24,6 +24,7 @@ const Profile = () => {
         <SimpleLineIcons name="menu" size={24} color="black" />
       </TouchableOpacity>
       {/* {console.log(user)} */}
+      
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>

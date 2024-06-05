@@ -1,8 +1,19 @@
 import React from 'react';
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity, View, StyleSheet, Text, Animated } from "react-native";
 
 export default function TaskButton({ item, onPress, expanded }) {
+  const navigation = useNavigation();
+
+  const openSubmitScreen = () => {
+    if (item && item.titulo) {
+      navigation.navigate('Submit', { titulo: item.titulo });
+    } else {
+      console.error("El item o el título no está definido");
+    }
+  };
+
   return (
     <View>
       <TouchableOpacity style={styles.taskButton} onPress={onPress}>
@@ -18,7 +29,7 @@ export default function TaskButton({ item, onPress, expanded }) {
           <TouchableOpacity>
             <Text style={styles.eliminar}>Eliminar tarea</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={openSubmitScreen}>
             <Text style={styles.buttonText}>Completar</Text>
           </TouchableOpacity>
         </Animated.View>
@@ -64,12 +75,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingVertical: 30,
     borderRadius: 10
-    
-  },
-  titulo: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
   descripcion: {
     fontSize: 18,
@@ -88,6 +93,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     alignSelf: 'center',
+    marginVertical: 5,
   },
   buttonText: {
     color: 'white',
