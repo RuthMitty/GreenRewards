@@ -1,21 +1,20 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import Ionicons from "react-native-vector-icons/Ionicons"
 import React from 'react'
+import Ionicons from "react-native-vector-icons/Ionicons"
 
-
-const SaveTaskModal = ({setModalOpen, type}) => {
-  return (
-    <View style={[styles.modalContainer, type === "alreadySaved" ? styles.alreadySaved : styles.saved]}>
+const ExchangeRewardModal = ({setModalOpen, type}) => {
+    return (
+        <View style={[styles.modalContainer, type === "exchanged" ? styles.saved :  styles.alreadySaved]}>
         <TouchableOpacity
             onPress={() => {setModalOpen(false)}}
             style={styles.closeButton}
         >
-            <Ionicons name="close" size={24} color={type === "alreadySaved" ? "#D9534F" : "#3B8C75"}/>
+            <Ionicons name="close" size={24} color={type === "exchanged" ? "#3B8C75" : "#D9534F"}/>
         </TouchableOpacity>
-        {type === "alreadySaved" ? (
-            <Text style={[styles.title, {color: "#D9534F"}]}>Parece que esta tarea ya fue registrada</Text>
+        {type === "exchanged" ? (
+            <Text style={[styles.title, {color: "#3B8C75"}]}>Recompensa canjeada correctamente!</Text>
         ) : (
-            <Text style={[styles.title, {color: "#3B8C75"}]}>Tarea registrada con exito</Text>
+            <Text style={[styles.title, {color: "#D9534F"}]}>Parece que no tienes puntos suficientes...</Text>
         )
 
         }
@@ -62,4 +61,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SaveTaskModal
+export default ExchangeRewardModal

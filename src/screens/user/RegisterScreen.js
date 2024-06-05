@@ -43,7 +43,9 @@ export default function RegisterScreen({navigation}) {
                 contraseña: contraseña,
                 fechaNac: fechaNac,
                 correo: correo,
-                INE: ''
+                tareasEnProceso: [],
+                recompensasUsuario: [],
+                puntos: 0
             })
 
             console.log(Usuarios)
