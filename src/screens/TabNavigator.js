@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./user/Actions";
 import Rewards from "./user/Rewards";
 import Profile from "./user/Profile";
+import Submit from "./user/Submit"
 import actions from "../.././assets/images/actions.png"
 import rewards from "../.././assets/images/rewards.png"
 import user from "../.././assets/images/user.png"
@@ -80,7 +81,11 @@ export default function TabNavigator(){
           headerShown: false}}
           
         />
-        
+        <Tab.Screen 
+        name="Submit" 
+        component={Submit} 
+        options={{ headerShown: false, tabBarButton: () => null }} 
+      />
       </Tab.Navigator>
     )
 }

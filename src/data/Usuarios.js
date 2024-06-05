@@ -94,9 +94,55 @@ export const Usuarios = [
         INE: '',
         puntos: 0, 
         tareasEnProceso: [
-            
+            {
+                id: 1,
+                titulo: 'Recoger colillas de cigarro',
+                descripcion: 'Recoger colillas de cigarro y colocarlas en los lugares asignados para desecharlas',
+                recompensa: 10,
+                status: 'En revision'
+        
+            },
+            {
+                id: 2,
+                titulo: 'Recolectar basura',
+                descripcion: 'Recolecta 3 items de basura en tu escuela',
+                recompensa: 3,
+                status: 'En revision'
+            },
+            {
+                id: 3,
+                titulo: 'Rellenar tu botella de agua en el filtro',
+                descripcion: 'Reusar una botella para tomar agua, rellenarla en el filtro del edificio de salones A',
+                recompensa: 5,
+                status: 'Rechazada'
+            },
+            {
+                id: 4,
+                titulo: 'Juntar colillas de cigarro',
+                descripcion: 'Reunir colillas de cigarro y tirarlas',
+                recompensa: 5,
+                status: 'Rechazada'
+            },
+            {
+                id: 5,
+                titulo: 'Practica1',
+                descripcion: 'Lorem ipsummmmm',
+                recompensa: 5,
+                status: 'Rechazada'
+            },
         ],
+<<<<<<< HEAD
         recompensasUsuario: []
+=======
+        recompensasUsuario: [
+            {
+                id: 1,
+                titulo: "Recompensa de prueba",
+                descripcion: "Esta en la descripcion de un recompensa de prueba",
+                puntos: 10
+            }
+        ]
+>>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
     },
    
 ]

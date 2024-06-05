@@ -26,6 +26,8 @@ const Menu = () => {
         component={MyRewards}
         options={{headerShown: false}}
       />
+
+
   </Drawer.Navigator>
   );
 };

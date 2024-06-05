@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useContext, useState } from 'react';
 import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -8,11 +9,54 @@ import { Usuarios } from '../../data/Usuarios';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { AuthContext } from '../../context/AuthContext';
 import EmptyScreen from '../../components/EmptyScreen';
+=======
+import React, { useContext, useState, useEffect } from "react";
+import {
+  View,
+  Image,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+  Text,
+  ActivityIndicator,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import circleImage from "../user/user2.png";
+import ImageBg from "../user/Group20.png";
+import TaskButton from "../../components/TaskButton";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { AuthContext } from "../../context/AuthContext";
+>>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
 
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
+  const [tasks, setTasks] = useState([]);
+  const [isTasksLoaded, setIsTasksLoaded] = useState(false);
   const navigation = useNavigation();
-  const {user, setUser} = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (user && user.tareasEnProceso) {
+        setTasks(user.tareasEnProceso);
+      } else {
+        setTasks([]);
+      }
+      setIsTasksLoaded(true);
+    }, 5000);
+
+    return () => clearTimeout(timeout);
+  }, [user]);
+
+  if (!isTasksLoaded) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#378C55" />
+        <Text style={styles.loadingText}>Cargando tareas...</Text>
+      </View>
+    );
+  }
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -27,14 +71,13 @@ const TaskScreen = () => {
   };
 
   const deleteTask = (taskId) => {
-    const updatedTasks = user.tareasEnProceso.filter(task => task.id !== taskId);
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
     setUser({
       ...user,
       tareasEnProceso: updatedTasks,
     });
   };
-
-  // const allTareasEnProceso = Usuarios.flatMap((usuario) => usuario.tareasEnProceso);
 
   return (
     <View style={styles.container}>
@@ -47,10 +90,17 @@ const TaskScreen = () => {
       </TouchableOpacity>
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
+<<<<<<< HEAD
         {user.tareasEnProceso.length > 0 ? (
           <FlatList
             data={user.tareasEnProceso}
             keyExtractor={item=>(item.id.toString())}
+=======
+        {tasks.length > 0 ? (
+          <FlatList
+            data={tasks}
+            keyExtractor={(item) => item.id.toString()}
+>>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
             renderItem={({ item }) => (
               <TaskButton
                 item={item}
@@ -63,6 +113,7 @@ const TaskScreen = () => {
             showsVerticalScrollIndicator={false}
           />
         ) : (
+<<<<<<< HEAD
           <EmptyScreen
             object="tareas"
             textColor="green"
@@ -71,6 +122,10 @@ const TaskScreen = () => {
 
         }
         
+=======
+          <Text style={styles.noTasksText}>No se encontraron tareas disponibles</Text>
+        )}
+>>>>>>> 9ac8a8ee79ebf03a69eb5fa70d6781f586ff67e2
       </View>
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
     </View>
@@ -80,16 +135,16 @@ const TaskScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   backgroundImage: {
-    position: 'absolute',
-    bottom: '35%',
+    position: "absolute",
+    bottom: "35%",
     left: 0,
     right: 0,
-    width: '100%',
-    height: '65%',
+    width: "100%",
+    height: "65%",
     zIndex: -1,
   },
   circleImage: {
@@ -98,42 +153,59 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   taskContainer: {
-    width: '100%',
+    width: "100%",
     paddingHorizontal: 50,
-    marginTop: '75%',
-    height:'52%',
-    overflow: 'scroll'
+    marginTop: "75%",
+    height: "52%",
+    overflow: "scroll",
   },
   taskTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: 'green',
-    alignSelf: 'flex-start',
-    marginBottom: 10
+    fontWeight: "bold",
+    color: "green",
+    alignSelf: "flex-start",
+    marginBottom: 10,
   },
   menuButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 40,
     left: 20,
     zIndex: 1,
   },
   fixedImageContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 130,
     left: 0,
     right: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   level: {
-    position: 'absolute',
+    position: "absolute",
     top: 50,
-    fontWeight: '700',
-    textAlign: 'center',
+    fontWeight: "700",
+    textAlign: "center",
     paddingVertical: 10,
-    color: '#378C55',
+    color: "#378C55",
     fontSize: 15,
-    width: '50%'
+    width: "50%",
+  },
+  noTasksText: {
+    fontSize: 16,
+    color: "gray",
+    textAlign: "center",
+    marginTop: 20,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingText: {
+    fontSize: 16,
+    color: "gray",
+    textAlign: "center",
+    marginTop: 20,
   },
 });
 

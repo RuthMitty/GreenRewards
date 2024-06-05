@@ -1,27 +1,49 @@
-import React from 'react';
+import React from "react";
 import { AntDesign } from "@expo/vector-icons";
-import { TouchableOpacity, View, StyleSheet, Text, Animated } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import {
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Text,
+  Animated,
+} from "react-native";
 
 export default function TaskButton({ item, onPress, expanded, onDelete }) {
   const titulop = item.titulo;
+
+  const navigation = useNavigation();
+
+  const openSubmitScreen = () => {
+    if (item && titulop) {
+      navigation.navigate("Submit", { titulo: item.titulo });
+    } else {
+      console.error("El item o el título no está definido");
+    }
+  };
+
   return (
     <View>
       <TouchableOpacity style={styles.taskButton} onPress={onPress}>
-        <Text style={styles.taskText}>{titulop.slice(0,25)}...</Text>
+        <Text style={styles.taskText}>{titulop.slice(0, 25)}...</Text>
         <View style={styles.iconContainer}>
-          <AntDesign name={expanded ? "up" : "down"} size={24} color="#868686" />
+          <AntDesign
+            name={expanded ? "up" : "down"}
+            size={24}
+            color="#868686"
+          />
         </View>
       </TouchableOpacity>
       {expanded && (
         <Animated.View style={styles.detailContainer}>
           <Text style={styles.descripcion}>{item.descripcion}</Text>
           <Text style={styles.rewards}>{item.recompensa}pts de recompensa</Text>
-          <Text style={styles.estatus}> Estatus: {item.status}</Text>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Completar</Text>
-          </TouchableOpacity>
           <TouchableOpacity onPress={onDelete}>
             <Text style={styles.eliminar}>Eliminar tarea</Text>
+          </TouchableOpacity>
+          <Text style={styles.estatus}> Estatus: {item.status}</Text>
+          <TouchableOpacity style={styles.button} onPress={openSubmitScreen}>
+              <Text style={styles.buttonText}>Completar</Text>
           </TouchableOpacity>
         </Animated.View>
       )}
@@ -56,55 +78,50 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   detailContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 20,
     borderTopWidth: 1,
-    borderColor: '#0000',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderColor: "#0000",
+    alignItems: "center",
+    justifyContent: "center",
     marginVertical: 10,
-    width: '100%',
+    width: "100%",
     paddingVertical: 30,
-    borderRadius: 10
-    
-  },
-  titulo: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    borderRadius: 10,
   },
   descripcion: {
     fontSize: 18,
     marginBottom: 10,
-    textAlign: 'center'
+    textAlign: "center",
   },
   eliminar: {
-    color: 'black',
+    color: "black",
     marginBottom: 10,
     fontSize: 16,
-    paddingTop: 10
+    paddingTop: 10,
   },
   button: {
-    width: '60%',
-    backgroundColor: '#3B8C75',
+    width: "60%",
+    backgroundColor: "#3B8C75",
     padding: 10,
     borderRadius: 5,
-    alignItems: 'center',
-    alignSelf: 'center',
+    alignItems: "center",
+    alignSelf: "center",
+    marginVertical: 5,
   },
   buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
   },
-  rewards:{
-    color: '#3391A6',
+  rewards: {
+    color: "#3391A6",
     marginBottom: 10,
-    fontSize: 16
+    fontSize: 16,
   },
   estatus: {
-    textAlign: 'center',
-    color: 'gray',
-    paddingVertical: 10
-  }
+    textAlign: "center",
+    color: "gray",
+    paddingVertical: 10,
+  },
 });
