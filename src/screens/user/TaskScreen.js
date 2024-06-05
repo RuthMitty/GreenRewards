@@ -11,7 +11,7 @@ import { AuthContext } from '../../context/AuthContext';
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
   const navigation = useNavigation();
-  const user = useContext(AuthContext);
+  const {user, setUser} = useContext(AuthContext);
 
   const openDrawer = () => {
     navigation.openDrawer();
@@ -25,10 +25,19 @@ const TaskScreen = () => {
     }
   };
 
-  const allTareasEnProceso = Usuarios.flatMap((usuario) => usuario.tareasEnProceso);
+  const deleteTask = (taskId) => {
+    const updatedTasks = user.tareasEnProceso.filter(task => task.id !== taskId);
+    setUser({
+      ...user,
+      tareasEnProceso: updatedTasks,
+    });
+  };
+
+  // const allTareasEnProceso = Usuarios.flatMap((usuario) => usuario.tareasEnProceso);
 
   return (
     <View style={styles.container}>
+      <Text style={styles.level}>Nivel: Protector del medio ambiente</Text>
       <View style={styles.fixedImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
@@ -38,15 +47,18 @@ const TaskScreen = () => {
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
         <FlatList
-          data={allTareasEnProceso}
+          data={user.tareasEnProceso}
+          keyExtractor={item=>(item.id.toString())}
           renderItem={({ item }) => (
             <TaskButton
               item={item}
               onPress={() => handleButtonPress(item)}
               expanded={expandedTask && expandedTask.id === item.id}
+              onDelete={() => deleteTask(item.id)}
             />
           )}
           contentContainerStyle={styles.taskList}
+          showsVerticalScrollIndicator={false}
         />
       </View>
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
@@ -73,12 +85,13 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-    
   },
   taskContainer: {
     width: '100%',
     paddingHorizontal: 50,
-    marginTop: '90%',
+    marginTop: '75%',
+    height:'52%',
+    overflow: 'scroll'
   },
   taskTitle: {
     fontSize: 20,
@@ -100,6 +113,16 @@ const styles = StyleSheet.create({
     right: 0,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  level: {
+    position: 'absolute',
+    top: 50,
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingVertical: 10,
+    color: '#378C55',
+    fontSize: 15,
+    width: '50%'
   },
 });
 

@@ -1,35 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native';
+import { useState } from 'react';
+import { View, Image, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Text , TextInput, Platform} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import circleImage from '../user/user2.png';
 import ImageBg from '../user/Group20.png';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import Ionicons from "react-native-vector-icons/Ionicons"
+import Modal from '../../components/Modal';
+import EditProfileModal from "../../components/EditProfileModal"
+
 
 
 const Profile = () => {
-
+  const [modalOpen, setModalOpen] = useState(false)
   const navigation = useNavigation();
   const openDrawer = () => {
       navigation.openDrawer();
     };
 
-  const user = useContext(AuthContext)
+  const {user, setUser} = useContext(AuthContext)
 
   return (
     <View style={styles.container}>
+      <Text style={styles.level}>Nivel: Protector del medio ambiente</Text>
       <TouchableOpacity onPress={openDrawer} style={styles.menuButton}>
         <SimpleLineIcons name="menu" size={24} color="black" />
       </TouchableOpacity>
-      {/* {console.log(user)} */}
-      
       <View style={styles.ImageContainer}>
         <Image source={circleImage} style={styles.circleImage} />
       </View>
-
-
       <Text style={styles.points}>Puntos: {user.puntos}</Text>
       <View style={styles.dataContainer}>
         <View style={styles.data}>
@@ -48,9 +49,19 @@ const Profile = () => {
             <Text style={styles.dataTitle}>Correo</Text>
             <Text style={styles.dataText}>{user.correo}</Text>
         </View>
-        
-        
       </View>
+      <TouchableOpacity style={styles.editButton} onPress={() => setModalOpen(true)}>
+        <Text style={{color: "#fff", fontWeight: "700", fontSize: 17, marginRight: 15}}>Editar Perfil</Text>
+        <Ionicons name='pencil-outline' size={20} color="#fff"/> 
+      </TouchableOpacity>
+      <Modal isOpen={modalOpen}>
+        <EditProfileModal
+          user={user}
+          setUser={setUser}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+        />
+      </Modal>
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
 
     </View>
@@ -125,6 +136,27 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 1,
   },
+  level: {
+    top: -15,
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingVertical: 10,
+    color: '#378C55',
+    fontSize: 15,
+    width: '50%'
+  },
+  editButton: {
+    flexDirection: "row",
+    backgroundColor: "green",
+    alignSelf: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20
+  },
+  
 });
 
 export default Profile;
