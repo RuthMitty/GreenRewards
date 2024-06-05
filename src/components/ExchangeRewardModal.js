@@ -9,7 +9,7 @@ const ExchangeRewardModal = ({setModalOpen, type}) => {
             onPress={() => {setModalOpen(false)}}
             style={styles.closeButton}
         >
-            <Ionicons name="close" size={24} color={type === "exchanged" ? "#D9534F" : "#3B8C75"}/>
+            <Ionicons name="close" size={24} color={type === "exchanged" ? "#3B8C75" : "#D9534F"}/>
         </TouchableOpacity>
         {type === "exchanged" ? (
             <Text style={[styles.title, {color: "#3B8C75"}]}>Recompensa canjeada correctamente!</Text>

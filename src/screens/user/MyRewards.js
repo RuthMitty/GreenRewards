@@ -47,10 +47,7 @@ const MyRewards = () => {
             showsVerticalScrollIndicator={false}
         />
         ):(
-          <EmptyScreen
-            object="recompensas"
-            textColor="#3391A6"
-          />
+          <Text style={styles.noTasksText}>No se encontraron recompensas</Text>
         )
         
         }
@@ -140,8 +137,15 @@ const styles = StyleSheet.create({
     color: '#378C55',
     fontSize: 15,
     width: '50%',
-    top: -40
-  }
+    top: -80
+  },
+  noTasksText: {
+    fontSize: 16,
+    color: "gray",
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 300
+  },
 });
 
 export default MyRewards;
