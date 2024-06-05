@@ -1,9 +1,22 @@
 import React from 'react';
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity, View, StyleSheet, Text, Animated } from "react-native";
 
 export default function TaskButton({ item, onPress, expanded, onDelete }) {
   const titulop = item.titulo;
+  
+    const navigation = useNavigation();
+
+  const openSubmitScreen = () => {
+    if (item && titulop) {
+      navigation.navigate('Submit', { titulo: item.titulo });
+    } else {
+      console.error("El item o el título no está definido");
+    }
+
+
+  
   return (
     <View>
       <TouchableOpacity style={styles.taskButton} onPress={onPress}>
@@ -16,6 +29,10 @@ export default function TaskButton({ item, onPress, expanded, onDelete }) {
         <Animated.View style={styles.detailContainer}>
           <Text style={styles.descripcion}>{item.descripcion}</Text>
           <Text style={styles.rewards}>{item.recompensa}pts de recompensa</Text>
+          <TouchableOpacity>
+            <Text style={styles.eliminar}>Eliminar tarea</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={openSubmitScreen}>
           <Text style={styles.estatus}> Estatus: {item.status}</Text>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Completar</Text>
@@ -66,12 +83,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingVertical: 30,
     borderRadius: 10
-    
-  },
-  titulo: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
   descripcion: {
     fontSize: 18,
@@ -91,6 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     alignSelf: 'center',
+    marginVertical: 5,
   },
   buttonText: {
     color: 'white',
