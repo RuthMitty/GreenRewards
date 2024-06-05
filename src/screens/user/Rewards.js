@@ -1,12 +1,18 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import {View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, ImageBackground, SafeAreaView, TextInput} from 'react-native';
 import { Recompensas } from "../../data/Recompensas";
 import ImageBg from '../user/Group20.png';
 import SearchBar from "../../components/SearchBar";
+import { AuthContext } from "../../context/AuthContext";
+import Modal from "../../components/Modal";
+import ExchangeRewardModal from "../../components/ExchangeRewardModal";
 
 export default function Rewards(){
   const [search, setSearch] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(Recompensas);
+  const {user, setUser} = useContext(AuthContext)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [type, setType] = useState("")
 
   useEffect(() => {
     const filtered = Recompensas.filter(reward => {
@@ -15,10 +21,35 @@ export default function Rewards(){
     setFilteredProducts(filtered);
   }, [search]);
 
+  const exchangeReward = (item) =>  {
+      console.log(item)
+
+      if (user.puntos >= item.puntosNecesarios){
+        const newReward = { ...item, vigencia: 30, codigo: "1243424" };
+        console.log(newReward)
+
+        // Actualizar el estado del usuario con la nueva tarea agregada
+        const updatedUser = {
+          ...user,
+          puntos: (user.puntos - item.puntosNecesarios),
+          recompensasUsuario: [...user.recompensasUsuario, newReward],
+        };
+
+        // Actualizar el usuario en el contexto
+        setUser(updatedUser);
+        setType("exchanged")
+        setModalOpen(true)
+      } else {
+        setType("notExchanged")
+        setModalOpen(true)
+      }
+      
+  }
+
     return (
         <View style={styles.container}>
           <View style={styles.rewardsContainer}>
-          <Text style={styles.points}>Puntos: 100</Text>
+          <Text style={styles.points}>Puntos: {user.puntos}</Text>
           <SearchBar
             value={search}
             OnChangeText={setSearch}
@@ -31,7 +62,7 @@ export default function Rewards(){
                 <View style={styles.reward}>
                     <Text style={{color: "#3391A6", fontWeight: "bold" }}>{item.titulo}</Text>
                     <Text style={{paddingVertical: 8}}>{item.descripcion}</Text>
-                    <TouchableOpacity style={styles.rewardButton}>
+                    <TouchableOpacity style={styles.rewardButton} onPress={() => exchangeReward(item)}>
                         <Text style={{color: "#fff", fontWeight: "bold"}}>Canjear: {item.puntosNecesarios} pts</Text>
                     </TouchableOpacity>
                 </View>
@@ -41,6 +72,13 @@ export default function Rewards(){
               showsVerticalScrollIndicator={false}
             />
           </View>
+          <Modal isOpen={modalOpen}>
+            <ExchangeRewardModal
+              modalOpen={modalOpen}
+              setModalOpen={setModalOpen}
+              type={type}
+            />
+          </Modal>
     
           <ImageBackground source={ImageBg} style={styles.backgroundImage} />
         </View>

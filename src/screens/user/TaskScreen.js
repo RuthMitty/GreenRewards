@@ -7,6 +7,7 @@ import TaskButton from '../../components/TaskButton';
 import { Usuarios } from '../../data/Usuarios';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { AuthContext } from '../../context/AuthContext';
+import EmptyScreen from '../../components/EmptyScreen';
 
 const TaskScreen = () => {
   const [expandedTask, setExpandedTask] = useState(null);
@@ -46,20 +47,30 @@ const TaskScreen = () => {
       </TouchableOpacity>
       <View style={styles.taskContainer}>
         <Text style={styles.taskTitle}>Tareas en proceso</Text>
-        <FlatList
-          data={user.tareasEnProceso}
-          keyExtractor={item=>(item.id.toString())}
-          renderItem={({ item }) => (
-            <TaskButton
-              item={item}
-              onPress={() => handleButtonPress(item)}
-              expanded={expandedTask && expandedTask.id === item.id}
-              onDelete={() => deleteTask(item.id)}
-            />
-          )}
-          contentContainerStyle={styles.taskList}
-          showsVerticalScrollIndicator={false}
-        />
+        {user.tareasEnProceso.length > 0 ? (
+          <FlatList
+            data={user.tareasEnProceso}
+            keyExtractor={item=>(item.id.toString())}
+            renderItem={({ item }) => (
+              <TaskButton
+                item={item}
+                onPress={() => handleButtonPress(item)}
+                expanded={expandedTask && expandedTask.id === item.id}
+                onDelete={() => deleteTask(item.id)}
+              />
+            )}
+            contentContainerStyle={styles.taskList}
+            showsVerticalScrollIndicator={false}
+          />
+        ) : (
+          <EmptyScreen
+            object="tareas"
+            textColor="green"
+          />
+        )
+
+        }
+        
       </View>
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
     </View>
