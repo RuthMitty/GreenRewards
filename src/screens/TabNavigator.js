@@ -75,7 +75,7 @@ export default function TabNavigator(){
               // Personaliza tu botón aquí
               <TouchableOpacity style={styles.botonMenu} {...props}>
                 <Image source={user} style={styles.iconMenu} />
-                <Text style={styles.textMenu}>Perfil</Text>
+                <Text style={styles.textMenu}>Yo</Text>
               </TouchableOpacity>
             ),
           headerShown: false}}

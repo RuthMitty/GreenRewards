@@ -18,6 +18,7 @@ export const AuthProvider = ({children}) => {
             setUserToken("Logged In!")
             await AsyncStorage.setItem("userToken", "Logged In!")
             await AsyncStorage.setItem("usuario", JSON.stringify(busqueda))
+            setUser(busqueda)
             console.log("Usuario guardado")
         } else{
             console.log("Usuario y/o contraseña incorrectos")
@@ -28,6 +29,7 @@ export const AuthProvider = ({children}) => {
     const logout = async () => {
         setIsLoading(true)
         setUserToken(null)
+        setUser(null)
         await AsyncStorage.removeItem("userToken")
         await AsyncStorage.removeItem("usuario")
         setIsLoading(false)
@@ -62,10 +64,17 @@ export const AuthProvider = ({children}) => {
         isLoggedIn()
     },[userToken])
 
-  
+    useEffect(() => {
+        const updateUserInStorage = async () => {
+          if (user) {
+            await AsyncStorage.setItem("usuario", JSON.stringify(user));
+          }
+        };
+        updateUserInStorage();
+      }, [user]);
 
     return(
-        <AuthContext.Provider value={{login, logout, isLoading, userToken, user}}>
+        <AuthContext.Provider value={{login, logout, isLoading, userToken, user, setUser}}>
             {children}
         </AuthContext.Provider>
     )

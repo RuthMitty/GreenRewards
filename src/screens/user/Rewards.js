@@ -22,7 +22,7 @@ export default function Rewards(){
           <SearchBar
             value={search}
             OnChangeText={setSearch}
-            placeholder="Recompensas"
+            placeholder="Buscar..."
           />
 
             <FlatList
@@ -38,6 +38,7 @@ export default function Rewards(){
               )}
               keyExtractor={(item) => item.id.toString()}
               contentContainerStyle={styles.taskList}
+              showsVerticalScrollIndicator={false}
             />
           </View>
     
@@ -65,7 +66,8 @@ export default function Rewards(){
         flex:1,
         alignItems:"center",
         justifyContent: "center",
-        width: '75%',
+        width: '100%',
+        padding: 25
       },
       reward : {
         backgroundColor: "#fff",
@@ -82,7 +84,7 @@ export default function Rewards(){
         borderRadius: 5,
       },
       points: {
-        color: "#fff", 
+        color: "#165E6E", 
         fontWeight: "800", 
         fontSize: 19, 
         alignSelf: "flex-start", 
