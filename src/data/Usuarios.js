@@ -64,11 +64,11 @@ export const Usuarios = [
         fechaNac: '12/05/2003',
         correo: 'sams@gmail.com',
         INE: '',
-        puntos: 0, 
+        puntos: 300, 
         tareasEnProceso: [
         
         ],
-        recompensasUsuario: {}
+        recompensasUsuario: []
     },
     {
         id: 3,
@@ -82,7 +82,7 @@ export const Usuarios = [
         tareasEnProceso: [
             
         ],
-        recompensasUsuario: {}
+        recompensasUsuario: []
     },
     {
         id: 4,

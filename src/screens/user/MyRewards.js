@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, Image, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import React, {useContext} from 'react';
+import { View, Image, Text, StyleSheet, ImageBackground, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import circleImage from '../user/user2.png';
 import ImageBg from '../user/Group20.png';
 import { SimpleLineIcons } from '@expo/vector-icons';
-
+import { AuthContext } from '../../context/AuthContext';
+import EmptyScreen from '../../components/EmptyScreen';
 
 
 
@@ -14,6 +15,8 @@ const MyRewards = () => {
     const openDrawer = () => {
         navigation.openDrawer();
       };
+
+    const {user} = useContext(AuthContext)
 
   return (
     <View style={styles.container}>
@@ -28,17 +31,30 @@ const MyRewards = () => {
 
       <View style={styles.voucherInfo}>
         <Text style={styles.title}>Mis recompensas</Text>
-        <View style={styles.voucherItem}>
-          <Text style={styles.voucherText}>Descuento en el comal</Text>
-          <Text style={styles.voucherText1}>Expira en 30 días</Text>
-          <Text style={styles.voucherCode}>Código: 1243424</Text>
-        </View>
-        <View style={styles.voucherItem}>
-          <Text style={styles.voucherText}>Descuento en el comal</Text>
-          <Text style={styles.voucherText1}>Expira en 30 días</Text>
-          <Text style={styles.voucherCode}>Código: 1243424</Text>
-        </View>
+        {user.recompensasUsuario.length > 0 ?
+        (
+          <FlatList
+            data={user.recompensasUsuario}
+            renderItem={({ item }) => (
+              <View style={styles.voucherItem}>
+                <Text style={styles.voucherText}>{item.titulo}</Text>
+                <Text style={styles.voucherText1}>Expira en {item.vigencia} días</Text>
+                <Text style={styles.voucherCode}>Código: {item.codigo}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item.id.toString()}
+            contentContainerStyle={styles.taskList}
+            showsVerticalScrollIndicator={false}
+        />
+        ):(
+          <Text style={styles.noTasksText}>No se encontraron recompensas</Text>
+        )
+        
+        }
+        
+        
       </View>
+      
       <ImageBackground source={ImageBg} style={styles.backgroundImage} />
     </View>
   );
@@ -51,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   voucherInfo: {
-    marginTop: '60%',
+    marginTop: '85%',
   },
   title: {
     fontSize: 20,
@@ -121,8 +137,15 @@ const styles = StyleSheet.create({
     color: '#378C55',
     fontSize: 15,
     width: '50%',
-    top: -40
-  }
+    top: -80
+  },
+  noTasksText: {
+    fontSize: 16,
+    color: "gray",
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 300
+  },
 });
 
 export default MyRewards;
