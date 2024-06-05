@@ -7,7 +7,7 @@ export const Usuarios = [
         fechaNac: '14/01/2003',
         correo: 'sarahi',
         INE: '',
-        puntos: 0, 
+        puntos: 200, 
         tareasEnProceso: [
             {
                 id: 1,
@@ -64,7 +64,7 @@ export const Usuarios = [
         fechaNac: '12/05/2003',
         correo: 'sams@gmail.com',
         INE: '',
-        puntos: 300, 
+        puntos: 3000, 
         tareasEnProceso: [
         
         ],

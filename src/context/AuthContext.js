@@ -44,7 +44,7 @@ export const AuthProvider = ({children}) => {
     //         console.log("Get user error ", e)
     //     }
     // }
-
+    
     const isLoggedIn = async() => {
         try {
             setIsLoading(true)
